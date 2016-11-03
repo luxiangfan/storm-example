@@ -21,13 +21,13 @@ public class MyTopology {
 
 		// 配置
 		Config conf = new Config();
-		conf.put("wordsFile", INPUT_FILE_PATH);
+		conf.put("wordsFile", args[0]);
 		conf.setDebug(false);
 		conf.put(Config.TOPOLOGY_MAX_SPOUT_PENDING, 1);
 
 		// 运行拓扑
 		LocalCluster cluster = new LocalCluster();
-		cluster.submitTopology("Getting-Started-Topology", conf, builder.createTopology());
+		cluster.submitTopology("Word-Count-Topology", conf, builder.createTopology());
 		Thread.sleep(1000);
 		cluster.shutdown();
 	}
